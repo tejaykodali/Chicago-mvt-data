@@ -42,8 +42,13 @@ chicagoMVT <- chicagoMVT %>% extract(Location, c('Latitude', 'Longitude'), '\\((
 chicagoMVT$Longitude <- round(as.numeric(chicagoMVT$Longitude), 2)
 chicagoMVT$Latitude <- round(as.numeric(chicagoMVT$Latitude), 2)
 
-## Get Chicago map and crime locations
+## Get Chicago map
 chicago <- get_map(location = 'chicago', zoom = 11)
+png(filename = "Chicago.png", width = 800, height = 600, units = "px")
+ggmap(chicago)
+dev.off()
+
+## Get crime locations
 locationCrimes <- as.data.frame(table(chicagoMVT$Longitude, chicagoMVT$Latitude))
 names(locationCrimes) <- c('long', 'lat', 'Frequency')
 locationCrimes$long <- as.numeric(as.character(locationCrimes$long))
