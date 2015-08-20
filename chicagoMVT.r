@@ -53,7 +53,7 @@ locationCrimes <- as.data.frame(table(chicagoMVT$Longitude, chicagoMVT$Latitude)
 names(locationCrimes) <- c('long', 'lat', 'Frequency')
 locationCrimes$long <- as.numeric(as.character(locationCrimes$long))
 locationCrimes$lat <- as.numeric(as.character(locationCrimes$lat))
-locationCrimes <- subset(locationCrimes, Freq > 0)
+locationCrimes <- subset(locationCrimes, Frequency > 0)
 
 ## Plotting the location heatmap
 png(filename = "Chicagomap.png", width = 800, height = 600, units = "px")
